@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { sendReplyEmail } from '../actions'
-import { Heart, Send, Check, X } from 'lucide-react'
+import { Heart, Send, Check, X, ExternalLink } from 'lucide-react'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 export default function ReplyButton({ valentineId }: { valentineId: string }) {
@@ -103,7 +104,15 @@ export default function ReplyButton({ valentineId }: { valentineId: string }) {
                                             <Check size={40} className="text-green-500" />
                                         </div>
                                         <h3 className="text-2xl font-bold text-gray-800">Sent!</h3>
-                                        <p className="text-gray-500">Your answer has been sent via email. ❤️</p>
+                                        <p className="text-gray-500 mb-8">Your answer has been sent via email. ❤️</p>
+
+                                        <Link
+                                            href="/"
+                                            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-2xl font-bold shadow-lg hover:shadow-rose-500/30 transition-all hover:scale-[1.02]"
+                                        >
+                                            <Heart className="fill-current" size={18} />
+                                            Get Your Own Card
+                                        </Link>
                                     </div>
                                 )}
                             </div>

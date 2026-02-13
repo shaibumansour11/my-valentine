@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { createValentine } from '../actions'
-import { Heart, Send, Copy, Check, X } from 'lucide-react'
+import { useRef } from 'react'
+import { Heart, Send, Copy, Check, X, Download } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import DownloadCard from './DownloadCard'
 
 export default function ValentineForm() {
     const [isOpen, setIsOpen] = useState(false)
@@ -26,6 +28,8 @@ export default function ValentineForm() {
             setResult({ id: res.id })
         }
     }
+
+    const cardRef = useRef<HTMLDivElement>(null)
 
     const copyLink = () => {
         if (!result) return
@@ -62,7 +66,7 @@ export default function ValentineForm() {
                             initial={{ scale: 0.9, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden border border-rose-100"
+                            className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden border border-rose-100 max-h-[90vh] overflow-y-auto"
                         >
                             <div className="bg-rose-500 p-6 text-white text-center relative">
                                 <button
@@ -113,7 +117,7 @@ export default function ValentineForm() {
                                         </div>
 
                                         <p className="text-xs text-gray-500 text-center italic mt-4">
-                                            "my love {formData.recipientName || '...'} you will be my valentine by {formData.senderName || '...'}"
+                                            "my love {formData.recipientName || '...'} you will be my valentine from {formData.senderName || '...'}"
                                         </p>
 
                                         <button
@@ -137,18 +141,38 @@ export default function ValentineForm() {
                                 ) : (
                                     <div className="text-center space-y-6">
                                         <div className="bg-rose-50 p-4 rounded-2xl">
-                                            <p className="text-gray-600 mb-2">Success! Send this link to your valentine:</p>
-                                            <div className="flex items-center gap-2 bg-white p-2 border border-rose-200 rounded-lg">
-                                                <code className="flex-1 text-xs truncate text-rose-600">
+                                            <p className="text-gray-600 mb-2 font-medium">Card Created! 🎉</p>
+
+                                            {/* Preview Card for Downloading */}
+                                            <div className="mb-4 overflow-hidden border border-rose-100 rounded-2xl bg-white shadow-inner">
+                                                <div
+                                                    ref={cardRef}
+                                                    className="p-6 bg-gradient-to-br from-rose-50 to-pink-50 text-center"
+                                                >
+                                                    <Heart size={40} className="text-rose-500 fill-rose-100 mx-auto mb-3" />
+                                                    <p className="text-xl font-black text-rose-600 leading-tight mb-2">
+                                                        My love <span className="text-rose-500">{formData.recipientName}</span>,
+                                                        you will be my valentine.
+                                                    </p>
+                                                    <p className="text-sm text-rose-400 font-medium">
+                                                        By <span className="font-bold text-rose-600">{formData.senderName}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex items-center gap-2 bg-white p-2 border border-rose-200 rounded-lg mb-4">
+                                                <code className="flex-1 text-[10px] truncate text-rose-600">
                                                     {window.location.origin}/card/{result.id}
                                                 </code>
                                                 <button
                                                     onClick={copyLink}
                                                     className="p-2 hover:bg-rose-50 rounded-lg text-rose-500 transition-colors"
                                                 >
-                                                    {copied ? <Check size={18} /> : <Copy size={18} />}
+                                                    {copied ? <Check size={16} /> : <Copy size={16} />}
                                                 </button>
                                             </div>
+
+                                            <DownloadCard cardId={result.id} cardRef={cardRef} />
                                         </div>
 
                                         <button
@@ -157,7 +181,7 @@ export default function ValentineForm() {
                                                 setIsOpen(false)
                                                 setFormData({ senderName: '', recipientName: '', email: '' })
                                             }}
-                                            className="text-rose-500 font-medium hover:underline"
+                                            className="text-rose-500 font-medium hover:underline text-sm"
                                         >
                                             Create another one
                                         </button>
