@@ -37,23 +37,23 @@ export default function CardDisplay({ valentine }: CardDisplayProps) {
                 <div className="space-y-6 mb-12">
                     <p className="text-3xl md:text-4xl font-black text-rose-600 leading-tight">
                         My love <span className="text-rose-500 italic underline decoration-rose-200">{valentine.recipientName}</span>,
-                        you will be my valentine.
+                        you will be my valentine ?.
                     </p>
                     <div className="h-px w-24 bg-rose-200 mx-auto" />
-                    <p className="text-xl text-rose-400 font-medium">
+                    <p className="text-xl text-rose-500 font-medium">
                         By <span className="font-bold text-rose-600">{valentine.senderName}</span>
                     </p>
                 </div>
 
                 <div className="flex flex-col items-center gap-4">
                     <ReplyButton valentineId={valentine.id} />
-                    <p className="text-xs text-rose-300 font-medium italic">Click to send a response back!</p>
+                    <p className="text-xs text-rose-400 font-medium italic">Click to send a response back!</p>
                 </div>
             </div>
 
             <DownloadCard cardId={valentine.id} cardRef={cardRef} />
 
-            <footer className="mt-12 text-rose-300 text-sm font-medium relative z-10">
+            <footer className="mt-12 text-rose-400 text-sm font-medium relative z-10">
                 Made with ❤️ for {valentine.recipientName}
             </footer>
         </main>

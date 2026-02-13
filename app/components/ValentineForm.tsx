@@ -89,7 +89,7 @@ export default function ValentineForm() {
                                                 type="text"
                                                 value={formData.recipientName}
                                                 onChange={(e) => setFormData({ ...formData, recipientName: e.target.value })}
-                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all"
+                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-rose-900 placeholder:text-rose-300"
                                                 placeholder="e.g. My Love"
                                             />
                                         </div>
@@ -100,7 +100,7 @@ export default function ValentineForm() {
                                                 type="text"
                                                 value={formData.senderName}
                                                 onChange={(e) => setFormData({ ...formData, senderName: e.target.value })}
-                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all"
+                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-rose-900 placeholder:text-rose-300"
                                                 placeholder="Your name"
                                             />
                                         </div>
@@ -111,7 +111,7 @@ export default function ValentineForm() {
                                                 type="email"
                                                 value={formData.email}
                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all"
+                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all text-rose-900 placeholder:text-rose-300"
                                                 placeholder="you@example.com"
                                             />
                                         </div>
@@ -152,7 +152,7 @@ export default function ValentineForm() {
                                                     <Heart size={40} className="text-rose-500 fill-rose-100 mx-auto mb-3" />
                                                     <p className="text-xl font-black text-rose-600 leading-tight mb-2">
                                                         My love <span className="text-rose-500">{formData.recipientName}</span>,
-                                                        you will be my valentine.
+                                                        you will be my valentine ?.
                                                     </p>
                                                     <p className="text-sm text-rose-400 font-medium">
                                                         By <span className="font-bold text-rose-600">{formData.senderName}</span>

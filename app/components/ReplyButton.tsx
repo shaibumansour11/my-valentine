@@ -75,7 +75,7 @@ export default function ReplyButton({ valentineId }: { valentineId: string }) {
                                             <textarea
                                                 value={answer}
                                                 onChange={(e) => setAnswer(e.target.value)}
-                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all min-h-[100px] resize-none"
+                                                className="w-full px-4 py-3 rounded-xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all min-h-[100px] resize-none text-rose-900 placeholder:text-rose-300"
                                                 placeholder="e.g. YES! I'd love to! ❤️"
                                             />
                                         </div>
