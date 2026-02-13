@@ -71,7 +71,7 @@ export default function ReplyButton({ valentineId }: { valentineId: string }) {
                                 {!sent ? (
                                     <form onSubmit={handleReply} className="space-y-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">Write a small message (optional)</label>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Write a small message</label>
                                             <textarea
                                                 value={answer}
                                                 onChange={(e) => setAnswer(e.target.value)}
