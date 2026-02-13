@@ -4,7 +4,7 @@ import db from '@/lib/prisma';
 // import { prisma } from '@/lib/prisma'
 import { Resend } from 'resend'
 
-const resend = new Resend('re_QhM8SzBA_M9GT5Y4XfGUsNer5VHUJTqUm')
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function createValentine(formData: { senderName: string; recipientName: string; email?: string }) {
     try {

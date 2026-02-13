@@ -33,7 +33,7 @@ export default function ValentineForm() {
 
     const copyLink = () => {
         if (!result) return
-        const link = `${window.location.origin}/card/${result.id}`
+        const link = `${process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/card/${result.id}`
         navigator.clipboard.writeText(link)
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
@@ -162,7 +162,7 @@ export default function ValentineForm() {
 
                                             <div className="flex items-center gap-2 bg-white p-2 border border-rose-200 rounded-lg mb-4">
                                                 <code className="flex-1 text-[10px] truncate text-rose-600">
-                                                    {window.location.origin}/card/{result.id}
+                                                    {process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/card/{result.id}
                                                 </code>
                                                 <button
                                                     onClick={copyLink}

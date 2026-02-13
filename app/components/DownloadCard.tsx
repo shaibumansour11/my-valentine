@@ -34,7 +34,7 @@ export default function DownloadCard({ cardId, cardRef }: DownloadCardProps) {
     }
 
     const handleCopyLink = () => {
-        const url = `${window.location.origin}/card/${cardId}`
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/card/${cardId}`
         navigator.clipboard.writeText(url)
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
